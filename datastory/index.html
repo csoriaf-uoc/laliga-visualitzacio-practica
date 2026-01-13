@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualització LaLiga 2020-2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Botó Scroll to Top -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Torna a dalt"></button>
+
+    <!-- Tooltip -->
+    <div class="tooltip" id="tooltip"></div>
+
+    <!-- SECCIÓ 0: Setup -->
+    <section id="section-0" class="section active" data-section="0">
+        <div class="setup-container">
+            <h1>LALIGA DATA STORY</h1>
+            <p>Exploració visual del rendiment i estil dels equips de LaLiga (2020-2025)</p>
+
+            <div class="selector-group">
+                <label for="season-select">Temporada</label>
+                <select id="season-select">
+                    <option value="2024-25">2024-25</option>
+                    <option value="2023-24">2023-24</option>
+                    <option value="2022-23">2022-23</option>
+                    <option value="2021-22">2021-22</option>
+                    <option value="2020-21">2020-21</option>
+                </select>
+            </div>
+
+            <div class="selector-group">
+                <label for="team-select">Equip a Seguir</label>
+                <select id="team-select">
+                    <option value="">Tots els equips</option>
+                </select>
+            </div>
+
+            <div class="scroll-hint">↓ Desplaça't per explorar ↓</div>
+        </div>
+    </section>
+
+    <!-- SECCIÓ 1: Overview -->
+    <section id="section-1" class="section" data-section="1">
+        <div class="viz-container">
+            <div class="narrative">
+                <h2>EL PANORAMA DE LALIGA</h2>
+                <p>
+                    Equips posicionats segons el seu rendiment global, mesurat com la diferència entre els gols
+                    esperats (xG) a favor i en contra. Els equips situats més a la dreta presenten un millor equilibri
+                    ofensiu-defensiu, mentre que els de l’esquerra acumulen un balanç negatiu al llarg de la temporada.
+                </p>
+            </div>
+            <svg id="main-viz" width="1000" height="650"></svg>
+        </div>
+    </section>
+
+    <!-- SECCIÓ 2: Eficiència -->
+    <section id="section-2" class="section" data-section="2">
+        <div class="viz-container">
+            <div class="narrative">
+                <h2>EFICIÈNCIA: ESPERANÇA VS REALITAT</h2>
+                <p>
+                    Comparació entre els gols esperats (xG) i els gols reals marcats per cada equip.
+                    Els equips situats per sobre de la diagonal han estat més eficients del que preveia el model,
+                    mentre que els que queden per sota han convertit menys del que indicaven les seves ocasions.
+                </p>
+            </div>
+            <svg id="viz-section-2"></svg>
+        </div>
+    </section>
+
+    <!-- SECCIÓ 3: Evolució -->
+    <section id="section-3" class="section" data-section="3">
+        <div class="viz-container">
+            <div class="narrative">
+                <h2>EVOLUCIÓ TEMPORAL</h2>
+                <p>
+                    Evolució del rendiment de cada equip al llarg de la temporada. Cada punt representa una jornada i
+                    les línies connecten l’ordre cronològic. Aquesta visualització permet identificar tendències,
+                    canvis de dinàmica i moments clau en el desenvolupament de la competició.
+                </p>
+            </div>
+            <svg id="viz-section-3"></svg>
+        </div>
+    </section>
+
+    <!-- SECCIÓ 4: Estil -->
+    <section id="section-4" class="section" data-section="4">
+        <div class="viz-container">
+
+            <div class="narrative">
+                <h2>ESTIL DE JOC PER EQUIP</h2>
+                <p>
+                    Comparació de l’estil de joc dels equips mitjançant tres gràfics radar que sintetitzen el seu
+                    comportament ofensiu, defensiu i de progressió amb pilota. Les variables estan normalitzades per
+                    temporada, de manera que els valors reflecteixen el posicionament relatiu de cada equip dins la
+                    lliga i faciliten la comparació entre perfils tàctics.
+                </p>
+            </div>
+
+            <div class="radar-grid">
+                <div>
+                    <h3>OFENSIVA</h3>
+                    <svg id="radar-offensive"></svg>
+                </div>
+
+                <div>
+                    <h3>DEFENSIVA</h3>
+                    <svg id="radar-defensive"></svg>
+                </div>
+
+                <div>
+                    <h3>PROGRESSIÓ</h3>
+                    <svg id="radar-progression"></svg>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SECCIÓ 5: Síntesi -->
+    <section id="section-5" class="section" data-section="5">
+        <div class="viz-container">
+            <div class="narrative">
+                <h2>CONCLUSIONS</h2>
+            </div>
+
+            <!-- KPI CARDS -->
+            <div id="kpi-cards">
+                <div class="kpi-card">
+                    <div class="kpi-title">Rendiment</div>
+                    <div class="kpi-value" id="kpi-performance">—</div>
+                    <div class="kpi-sub">Balanç xG</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-title">Eficiència</div>
+                    <div class="kpi-value" id="kpi-efficiency">—</div>
+                    <div class="kpi-sub">Gols vs xG</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-title">Evolució</div>
+                    <div class="kpi-value" id="kpi-trend">—</div>
+                    <div class="kpi-sub">Tendència</div>
+                </div>
+
+                <div class="kpi-card">
+                    <div class="kpi-title">Estil</div>
+                    <div class="kpi-value" id="kpi-style">—</div>
+                    <div class="kpi-sub">Perfil</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- D3.js carregat des de CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
