@@ -7,7 +7,7 @@ L’objectiu principal és analitzar el rendiment esportiu dels equips a partir 
 ## 🔗 Visualització interactiva
 La visualització està disponible públicament a través de GitHub Pages:
 
-👉 **[Enllaç a la visualització](https://csoriaf-uoc.github.io/laliga-visualitzacio-practica/)**
+👉 **[Enllaç a la visualització](https://csoriaf-uoc.github.io/laliga-datastory/)**
 
 ## 📊 Conjunt de dades
 Les dades utilitzades corresponen a diverses temporades de LaLiga i inclouen informació sobre:
